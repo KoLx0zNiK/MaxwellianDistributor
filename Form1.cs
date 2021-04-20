@@ -35,6 +35,11 @@ namespace raspredMaksvell
         double[] Vx;
         double[] Vy;//задание массива
 
+        int t;//счетчик времени
+        double[] Cs;//пройденный путь
+        int[] Cn;//счетчик столкновений
+        double Vsr, Nsr, Lsr, V2sr;
+
 
         Random rnd = new Random();
         Bitmap Bmp1, Bmp2;//создание битмапа(области для рисования)
@@ -46,17 +51,30 @@ namespace raspredMaksvell
             Ff2.Visible = true;
             посмотретьToolStripMenuItem.Enabled = false;
             button1.Enabled = false;
-            
+            double Vsr = 0;
+            double Lsr = 0;
+            double Nsr = 0;
+            double V2sr = 0;
+            for (int i=0; i<N; i++)
+            {
+                Vsr += Cs[i];
+                Lsr += Cs[i] / (Cn[i] + 1);
+                Nsr += (double)Cn[i];
+                V2sr += Vx[i] * Vx[i] + Vy[i] * Vy[i];
+            }
+            Vsr = Vsr / (N * t * dt);
+            Lsr = Lsr / N;
+            Nsr = Nsr / (N * t * dt);
+            V2sr = V2sr / N;
+            Ff2.textBox1.Text = Vsr.ToString();
+            Ff2.textBox2.Text = Lsr.ToString();
+            Ff2.textBox3.Text = Nsr.ToString();
         }
 
         Pen pen1 = new Pen(Color.Red, 2);//создание ручки
         Pen pen2 = new Pen(Color.Green, 2);//создание ручки
         SolidBrush Br = new SolidBrush(Color.Yellow);//создание кисточки
 
-
-        int t;//счетчик времени
-        double[] Cs;//пройденный путь
-        int[] Cn;//счетчик столкновений
 
 
 
