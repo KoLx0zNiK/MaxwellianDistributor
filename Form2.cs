@@ -20,6 +20,7 @@ namespace raspredMaksvell
         private void Form2_FormClosed(object sender, FormClosedEventArgs e)
         {
             Form1.Ff1.посмотретьToolStripMenuItem.Enabled = true;
+            Form1.Ff1.button1.Enabled = true;
         }
     }
 }

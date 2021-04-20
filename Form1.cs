@@ -45,6 +45,8 @@ namespace raspredMaksvell
             Ff2 = new Form2();
             Ff2.Visible = true;
             посмотретьToolStripMenuItem.Enabled = false;
+            button1.Enabled = false;
+            
         }
 
         Pen pen1 = new Pen(Color.Red, 2);//создание ручки
@@ -172,6 +174,7 @@ namespace raspredMaksvell
             button1.Enabled = true;//включается первая кнопка
             button2.Enabled = false;//выключается вторая кнопка
             timer1.Enabled = false;//выключается таймер
+            посмотретьToolStripMenuItem.Enabled = true;
         }
 
         private void button3_Click(object sender, EventArgs e)

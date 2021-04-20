@@ -83,7 +83,7 @@ namespace raspredMaksvell
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(654, 23);
+            this.label8.Location = new System.Drawing.Point(1204, 24);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(155, 17);
             this.label8.TabIndex = 4;
@@ -91,7 +91,7 @@ namespace raspredMaksvell
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(654, 46);
+            this.textBox8.Location = new System.Drawing.Point(1204, 47);
             this.textBox8.Name = "textBox8";
             this.textBox8.ReadOnly = true;
             this.textBox8.Size = new System.Drawing.Size(155, 22);
@@ -319,19 +319,19 @@ namespace raspredMaksvell
             // открытьToolStripMenuItem
             // 
             this.открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
-            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(166, 26);
             this.открытьToolStripMenuItem.Text = "Открыть";
             // 
             // сохранитьToolStripMenuItem
             // 
             this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(166, 26);
             this.сохранитьToolStripMenuItem.Text = "Сохранить";
             // 
             // выходToolStripMenuItem
             // 
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(166, 26);
             this.выходToolStripMenuItem.Text = "Выход";
             // 
             // результатыToolStripMenuItem
@@ -344,6 +344,7 @@ namespace raspredMaksvell
             // 
             // посмотретьToolStripMenuItem
             // 
+            this.посмотретьToolStripMenuItem.Enabled = false;
             this.посмотретьToolStripMenuItem.Name = "посмотретьToolStripMenuItem";
             this.посмотретьToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.посмотретьToolStripMenuItem.Text = "Посмотреть";
@@ -378,7 +379,6 @@ namespace raspredMaksvell
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
@@ -405,6 +405,7 @@ namespace raspredMaksvell
         private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem результатыToolStripMenuItem;
         public System.Windows.Forms.ToolStripMenuItem посмотретьToolStripMenuItem;
+        public System.Windows.Forms.Button button1;
     }
 }
 
