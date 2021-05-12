@@ -39,7 +39,7 @@ namespace raspredMaksvell
         int t;//счетчик времени
         double[] Cs;//пройденный путь
         int[] Cn;//счетчик столкновений
-        double Vsr, Nsr, Lsr, V2sr;
+        public static double Vsr, Nsr, Lsr, V2sr;
         public static double dv = 5;
         public static int[] distrV = new int[500];
         public static int Nans;
@@ -52,6 +52,41 @@ namespace raspredMaksvell
         bool NewModel = true;//переменная логического типа
 
         Random rnd = new Random();
+
+        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+            f = new FileStream(openFileDialog1.FileName, FileMode.Open, FileAccess.Read);
+            DataOut = new BinaryReader(f);
+            N = DataOut.ReadInt32();
+            R = DataOut.ReadDouble();
+            Vmax = DataOut.ReadDouble();
+            Xmax = DataOut.ReadDouble();
+            Ymax = DataOut.ReadDouble();
+            dt = DataOut.ReadDouble();
+            K = DataOut.ReadDouble();
+            X = new double[N];
+            Y = new double[N];
+            Cs = new double[N];
+            Cn = new int[N];
+            Vx = new double[N];
+            Vy = new double[N];
+            for (int i = 0; i < N; i++) X[i] = DataOut.ReadDouble();
+            for (int i = 0; i < N; i++) Y[i] = DataOut.ReadDouble();
+            for (int i = 0; i < N; i++) Vx[i] = DataOut.ReadDouble();
+            for (int i = 0; i < N; i++) Vy[i] = DataOut.ReadDouble();
+            for (int i = 0; i < N; i++) Cs[i] = DataOut.ReadDouble();
+            for (int i = 0; i < N; i++) Cn[i] = DataOut.ReadInt32();
+            for (int i = 0; i < N; i++) distrV[i] = DataOut.ReadInt32();
+            DataOut.Close();
+            NewModel = false; посмотретьToolStripMenuItem.Enabled = true;
+            textBox1.Text = N.ToString();
+            textBox2.Text = R.ToString();
+            textBox3.Text = Vmax.ToString();
+            textBox4.Text = Xmax.ToString();
+            textBox5.Text = Ymax.ToString();
+            textBox6.Text = dt.ToString();
+            textBox7.Text = K.ToString();
+        }
 
         private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
@@ -72,35 +107,6 @@ namespace raspredMaksvell
             for (int i = 0; i < N; i++) DataIn.Write(Cn[i]);
             for (int i = 0; i < N; i++) DataIn.Write(distrV[i]);
             DataIn.Close();
-        }
-
-        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
-        {
-            f = new FileStream(openFileDialog1.FileName, FileMode.Open, FileAccess.Read);
-            DataOut = new BinaryReader(f);
-            N = DataOut.ReadInt32();
-            R = DataOut.ReadDouble();
-            Vmax = DataOut.ReadDouble();
-            Xmax = DataOut.ReadDouble();
-            Ymax = DataOut.ReadDouble();
-            dt = DataOut.ReadDouble();
-            K = DataOut.ReadDouble();
-            for (int i = 0; i < N; i++) X[i] = DataOut.ReadDouble();
-            for (int i = 0; i < N; i++) Y[i] = DataOut.ReadDouble();
-            for (int i = 0; i < N; i++) Vx[i] = DataOut.ReadDouble();
-            for (int i = 0; i < N; i++) Vy[i] = DataOut.ReadDouble();
-            for (int i = 0; i < N; i++) Cs[i] = DataOut.ReadDouble();
-            for (int i = 0; i < N; i++) Cn[i] = DataOut.ReadInt32();
-            for (int i = 0; i < N; i++) distrV[i] = DataOut.ReadInt32();
-            DataOut.Close();
-            NewModel = false; посмотретьToolStripMenuItem.Enabled = true;
-            textBox1.Text = N.ToString();
-            textBox2.Text = R.ToString();
-            textBox3.Text = Vmax.ToString();
-            textBox4.Text = Xmax.ToString();
-            textBox5.Text = Ymax.ToString();
-            textBox6.Text = dt.ToString();
-            textBox7.Text = K.ToString();
         }
 
 

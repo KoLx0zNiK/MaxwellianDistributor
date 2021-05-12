@@ -14,9 +14,11 @@ namespace raspredMaksvell
     {
         Bitmap Bmp;
         Graphics Gr;
-        double Kh, Kv, x, y;
-        int X1scr, Y1scr, X2scr, Y2scr;
+        public double Kh, Kv, x, y;
+       public int X1scr, Y1scr, X2scr, Y2scr;
         Pen P1 = new Pen(Color.Black,2);
+        Pen P2 = new Pen(Color.Yellow, 2);
+        SolidBrush Br = new SolidBrush(Color.Red);
 
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
@@ -27,9 +29,6 @@ namespace raspredMaksvell
         {
             Resunok();
         }
-
-        Pen P2 = new Pen(Color.Yellow, 2);
-        SolidBrush Br = new SolidBrush(Color.Red);
 
         public Form2()
         {
@@ -60,6 +59,21 @@ namespace raspredMaksvell
                 Gr.DrawRectangle(P1, (int)(Kh * i * Form1.dv),(int)(Bmp.Height - Kv * Form1.distrV[i] / (Form1.N * Form1.Nans)),(int)(Kh * Form1.dv), (int)(Kv * Form1.distrV[i] / (Form1.N * Form1.Nans)));
                 Gr.FillRectangle(Br, (int)(Kh * i * Form1.dv),(int)(Bmp.Height - Kv * Form1.distrV[i] / (Form1.N * Form1.Nans)),(int)(Kh * Form1.dv), (int)(Kv * Form1.distrV[i] / (Form1.N * Form1.Nans)));
             }
+            X1scr = 0;
+            Y1scr = Bmp.Height;
+            for (int i = 1; i <= Bmp.Width; i++)
+            {
+                X2scr = i;
+                x = X2scr / Kh;
+                y = (Form1.dv * 2 * x )* (Math.Exp(-(x * x) / Form1.V2sr)/Form1.V2sr);
+                Y2scr = (int)(Bmp.Height - Kv * y);
+                Gr.DrawLine(P2, X1scr, Y1scr, X2scr, Y2scr);
+                X1scr = X2scr;
+                Y1scr = Y2scr;
+            }
+
+
+
             pictureBox1.Image = Bmp;
         }
     }
